@@ -11,7 +11,7 @@ const Home = () => {
                 <Header></Header>
             </div>
             <Banner></Banner>
-            <div className="py-8">
+            <div className="py-8 border-b border-gray-300">
                 <ValueProposition></ValueProposition>
             </div>
             <Offerings></Offerings>
