@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useFetchData from '../../../hooks/useFetchData';
 import Offering from './Offering/Offering';
 
 const Offerings = () => {
-    const [packages, setPackages] = useState([]);
 
-    useEffect(() => {
-        fetch('https://vast-tor-48150.herokuapp.com/packages')
-            .then(res => res.json())
-            .then(data => setPackages(data));
-    }, [])
+    const { packages } = useFetchData();
 
     return (
         <div className="px-20 py-6">

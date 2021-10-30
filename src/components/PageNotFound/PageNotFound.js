@@ -2,7 +2,7 @@ import React from 'react';
 
 const PageNotFound = () => {
     return (
-        <div>
+        <div className="py-20">
             This is page not found
         </div>
     );

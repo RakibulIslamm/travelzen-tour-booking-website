@@ -1,9 +1,10 @@
 import React from 'react';
 import { CalendarIcon, UserGroupIcon, CurrencyBangladeshiIcon } from '@heroicons/react/outline'
+import { Link } from 'react-router-dom';
 
 const Offering = (props) => {
     // console.log(props.package);
-    const { img, title, duration, cost, overview, group_size } = props.package
+    const { img, title, duration, cost, overview, group_size, _id } = props.package
     return (
         <div>
             <div className="shadow rounded-xl border border-gray-200">
@@ -15,21 +16,23 @@ const Offering = (props) => {
                     <div className="flex justify-between items-center py-3">
                         <div className="flex items-center gap-3 text-gray-500">
                             <CalendarIcon className="w-6" />
-                            <p>Duration</p>
+                            <p>{duration}</p>
                         </div>
                         <div className="flex items-center gap-3 text-gray-500">
                             <UserGroupIcon className="w-6" />
-                            <p>Duration</p>
+                            <p>{group_size} person</p>
                         </div>
                     </div>
                     <hr className="mb-4" />
                     <div className="flex justify-between items-center">
                         <div className="flex items-center gap-3 text-gray-500">
                             <CurrencyBangladeshiIcon className="w-6" />
-                            <p>5000</p>
+                            <p>{cost}</p>
                         </div>
                         <div className="flex items-center gap-3 text-gray-500">
-                            <button className="px-6 py-2 bg-yellow-600 text-white">Book Now</button>
+                            <Link to={`/booking/${_id}`}>
+                                <button className="px-6 py-2 bg-yellow-600 text-white">Book Now</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
