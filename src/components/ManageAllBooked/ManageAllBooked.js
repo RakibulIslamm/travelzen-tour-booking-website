@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
 import BookedItem from './BookedItem.js/BookedItem';
 
 const ManageAllBooked = () => {
     const [allBooked, setAllBooked] = useState([]);
     const [updatedBook, setUpdatedBook] = useState([]);
-    const { user } = useAuth();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-booked')
+        fetch('https://vast-tor-48150.herokuapp.com/all-booked')
             .then(res => res.json())
             .then(data => {
                 setAllBooked(data);
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log(error));
+        setLoading(false)
     }, [updatedBook]);
 
     const handleApprove = (id) => {
         const booked = allBooked.find(booked => booked._id === id);
-        const url = `http://localhost:5000/my-booked/${id}`
+        const url = `https://vast-tor-48150.herokuapp.com/my-booked/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -29,8 +29,8 @@ const ManageAllBooked = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    const rest = allBooked.filter(booked => booked._id === id);
-                    setUpdatedBook(rest);
+                    const updatedItem = allBooked.filter(booked => booked._id === id);
+                    setUpdatedBook(updatedItem);
                 }
                 console.log(data);
             })
@@ -38,30 +38,33 @@ const ManageAllBooked = () => {
 
     // Handle Delete
     const handleDelete = id => {
-        console.log(id);
-        fetch(`http://localhost:5000/all-booked/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount) {
-                    const rest = allBooked.filter(booked => booked._id !== id);
-                    setAllBooked(rest);
-                    alert('Deleted');
-                }
+        const progress = window.confirm('Are you sure you want DELETE?');
+        if (progress) {
+            fetch(`https://vast-tor-48150.herokuapp.com/all-booked/${id}`, {
+                method: 'DELETE'
             })
-            .catch(error => console.log(error))
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        const rest = allBooked.filter(booked => booked._id !== id);
+                        setAllBooked(rest);
+                        alert('Deleted');
+                    }
+                })
+                .catch(error => console.log(error))
+        }
     }
 
 
     return (
-        <div className="min-h-screen justify-center flex items-center px-20 py-20">
+        <div className="min-h-screen justify-center flex items-center px-20 sm:px-10 xs:px-5 py-20">
             <div>
-                <h2 className="text-3xl font-semibold py-8 text-center">My Booking List</h2>
-                <div className="grid grid-cols-2 gap-4">
+                <h2 className="text-3xl font-semibold py-8 text-center">Manage All Booking List</h2>
+                <div className="grid lg:grid-cols-2 gap-4">
 
                     {
-                        allBooked.map(bookedItem => <BookedItem key={bookedItem._id} bookedItem={bookedItem} handleApprove={handleApprove} handleDelete={handleDelete}></BookedItem>)
+                        loading ? 'Loading....' :
+                            allBooked.map(bookedItem => <BookedItem key={bookedItem._id} bookedItem={bookedItem} handleApprove={handleApprove} handleDelete={handleDelete}></BookedItem>)
                     }
                 </div>
             </div>

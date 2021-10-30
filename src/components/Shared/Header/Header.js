@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from "../../../hooks/useAuth";
+import UserDropDown from '../UserDropDown/UserDropDown';
 
 const Header = () => {
-
+    const [toggle, setToggle] = useState(false)
     const { user, isLoading } = useAuth();
 
+    const handleToggle = () => {
+        setToggle(!toggle);
+    }
 
     return (
         <div className="flex justify-between items-center h-16 lg:px-20 md:px-20 sm:px-10 xs:px-6">
@@ -35,12 +39,14 @@ const Header = () => {
                             !user ? <Link to="/login">
                                 <button className="px-8 py-2 bg-yellow-600 text-white">Login</button>
                             </Link> :
-                                <button>
+                                <button onClick={handleToggle}>
                                     <img className="w-8 rounded-full" src={`${user.photoURL}`} alt="" />
                                 </button>
                         }
                     </div>
                 }
+
+                <UserDropDown toggle={toggle} setToggle={setToggle}></UserDropDown>
             </div>
         </div>
     );

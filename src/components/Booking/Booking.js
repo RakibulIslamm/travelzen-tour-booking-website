@@ -14,7 +14,7 @@ const Booking = () => {
     useEffect(() => {
         try {
             async function fetchMyAPI() {
-                let response = await fetch(`http://localhost:5000/package/${id}`)
+                let response = await fetch(`https://vast-tor-48150.herokuapp.com/package/${id}`)
                 response = await response.json()
                 setSinglePackage(response)
             }
@@ -24,11 +24,7 @@ const Booking = () => {
             console.log(error);
         }
 
-    }, [])
-
-    console.log(singlePackage.img);
-
-    console.log(singlePackage.departure);
+    }, []);
 
     const onSubmit = (data) => {
         data.status = false;
@@ -63,9 +59,9 @@ const Booking = () => {
 
 
     return (
-        <div className="min-h-screen py-20 pb-20 flex justify-center items-center flex-col px-20">
-            <div className="w-full h-32 bg-cover bg-center">
-                <h1 className="text-3xl font-semibold py-5 w-6/12 text-center mx-auto">Book - {singlePackage.title}</h1>
+        <div className="min-h-screen py-20 pb-20 flex justify-center items-center flex-col px-20 sm:px-10 xs:px-5">
+            <div className="w-full bg-cover bg-center">
+                <h1 className="text-3xl xs:text-lg font-semibold py-5 w-6/12 sm:w-full xs:w-full text-center mx-auto">Book - {singlePackage.title}</h1>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
                 <div className="flex flex-wrap -mx-3 mb-6">
