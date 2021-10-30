@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import Offerings from '../Offerings/Offerings';
+import Subscribe from '../Subscribe/Subscribe';
 import ValueProposition from '../ValueProposition/ValueProposition';
 
 const Home = () => {
@@ -11,6 +12,9 @@ const Home = () => {
                 <ValueProposition></ValueProposition>
             </div>
             <Offerings></Offerings>
+            <div className="mt-5">
+                <Subscribe></Subscribe>
+            </div>
         </div>
     );
 };

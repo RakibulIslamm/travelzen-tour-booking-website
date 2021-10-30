@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import Booked from './Booked/Booked';
+import BookedItem from './BookedItem.js/BookedItem';
 
-const MyBooked = () => {
-    const [myBooked, setMyBooked] = useState([]);
+const ManageAllBooked = () => {
+    const [allBooked, setAllBooked] = useState([]);
     const [updatedBook, setUpdatedBook] = useState([]);
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch('http://localhost:5000/my-booked', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify([user.email])
-        })
+        fetch('http://localhost:5000/all-booked')
             .then(res => res.json())
             .then(data => {
-                setMyBooked(data);
+                setAllBooked(data);
             })
             .catch(error => console.log(error))
     }, [updatedBook]);
 
     const handleApprove = (id) => {
-        const booked = myBooked.find(booked => booked._id === id);
+        const booked = allBooked.find(booked => booked._id === id);
         const url = `http://localhost:5000/my-booked/${id}`
         fetch(url, {
             method: 'PUT',
@@ -35,11 +29,28 @@ const MyBooked = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    const rest = myBooked.filter(booked => booked._id === id);
+                    const rest = allBooked.filter(booked => booked._id === id);
                     setUpdatedBook(rest);
                 }
                 console.log(data);
             })
+    };
+
+    // Handle Delete
+    const handleDelete = id => {
+        console.log(id);
+        fetch(`http://localhost:5000/all-booked/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    const rest = allBooked.filter(booked => booked._id !== id);
+                    setAllBooked(rest);
+                    alert('Deleted');
+                }
+            })
+            .catch(error => console.log(error))
     }
 
 
@@ -50,7 +61,7 @@ const MyBooked = () => {
                 <div className="grid grid-cols-2 gap-4">
 
                     {
-                        myBooked.map(bookedItem => <Booked key={bookedItem._id} bookedItem={bookedItem} handleApprove={handleApprove}></Booked>)
+                        allBooked.map(bookedItem => <BookedItem key={bookedItem._id} bookedItem={bookedItem} handleApprove={handleApprove} handleDelete={handleDelete}></BookedItem>)
                     }
                 </div>
             </div>
@@ -58,4 +69,4 @@ const MyBooked = () => {
     );
 };
 
-export default MyBooked;
+export default ManageAllBooked;

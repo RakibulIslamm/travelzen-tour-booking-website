@@ -11,6 +11,7 @@ import Footer from './components/Shared/Footer/Footer';
 import AddNewPackage from './components/AddNewPackage/AddNewPackage';
 import MyBooked from './components/MyBooked/MyBooked';
 import ScrollTop from './components/ScrollTop/ScrollTop';
+import ManageAllBooked from './components/ManageAllBooked/ManageAllBooked';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path="/my-booked">
             <MyBooked></MyBooked>
+          </PrivateRoute>
+          <PrivateRoute exact path="/all-booked">
+            <ManageAllBooked></ManageAllBooked>
           </PrivateRoute>
           <Route path="*">
             <PageNotFound></PageNotFound>
