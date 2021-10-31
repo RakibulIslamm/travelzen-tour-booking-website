@@ -24,9 +24,9 @@ const UserDropDown = ({ toggle, setToggle }) => {
     return (
         <>
             {
-                user && <div className={`absolute top-16 right-5 w-48 bg-blue-900 opacity-80 z-20 ${toggle ? 'h-52 overflow-hidden border border-blue-400' : 'p-0 h-0 overflow-hidden'} transition-all duration-200`}>
-                    <div className="w-full p-5 text-white">
-                        <div className="border-b border-gray-300 flex justify-center items-start flex-col py-2">
+                user && <div className={`absolute top-16 right-5 w-48 bg-white z-20 ${toggle ? 'h-52 overflow-hidden border border-gray-200 shadow' : 'p-0 h-0 overflow-hidden'} transition-all duration-200`}>
+                    <div className="w-full p-5 text-gray-700">
+                        <div className="border-b border-gray-300 flex justify-center items-start flex-col gap-2 py-2">
                             <img className="w-10 h-10 rounded-full" src={user && user.photoURL} alt="" />
                             <h1 className=" text-base font-bold uppercase">{user && user.displayName}</h1>
                         </div>
