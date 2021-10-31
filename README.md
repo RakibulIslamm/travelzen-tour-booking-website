@@ -7,14 +7,14 @@ Travelzen live link [Visit](https://travelzen-5b237.web.app/).
 In this project, I developed a simple tour booking website with react, mongodb and firebase.
 
 ## TRAVELZEN Features
-    * Login System
-    * Booking Funtionality
-    * Package Post Funtionality
-    * Approval System
-    * Delete Funtionality
-    * Private Route
-    * Responsive etc
+* Login System
+* Booking Funtionality
+* Package Post Funtionality
+* Approval System
+* Delete Funtionality
+* Private Route
+* Responsive etc
 
 
 ## What I used for it?
-    * I used `JSX`, `tailwind`, `React`, `React Router`, `Firebase`, `node express`, `mongodb`, `react icon library` and `Heroku`
+* I used `JSX`, `tailwind`, `React`, `React Router`, `Firebase`, `node express`, `mongodb`, `react icon library` and `Heroku`
