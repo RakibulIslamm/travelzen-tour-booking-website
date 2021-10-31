@@ -16,5 +16,5 @@ In this project, I developed a simple tour booking website with react, mongodb a
 * Responsive etc
 
 
-## What I used for it?
+## Technology used?
 * I used `JSX`, `tailwind`, `React`, `React Router`, `Firebase`, `node express`, `mongodb`, `react icon library` and `Heroku`
