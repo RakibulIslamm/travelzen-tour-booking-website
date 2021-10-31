@@ -18,9 +18,10 @@ const MyBooked = () => {
             .then(res => res.json())
             .then(data => {
                 setMyBooked(data);
+                setLoading(false);
             })
             .catch(error => console.log(error));
-        setLoading(false);
+
     }, []);
 
     const handleDelete = id => {
@@ -46,11 +47,13 @@ const MyBooked = () => {
         <div className="min-h-screen justify-center flex items-center px-20 sm:px-10 xs:px-5 py-20">
             <div>
                 <h2 className="text-3xl font-semibold py-8 text-center">My Booking List</h2>
-                <div className="grid lg:grid-cols-2 gap-4">
+                <div className="flex justify-center items-center">
 
                     {
                         loading ? "Loading..." :
-                            myBooked.map(bookedItem => <Booked key={bookedItem._id} bookedItem={bookedItem} handleDelete={handleDelete}></Booked>)
+                            !myBooked.length ? <p className="text-xl text-gray-600 font-semibold block">You have no booked</p> : <div className="grid lg:grid-cols-2 gap-4">
+                                {myBooked.map(bookedItem => <Booked key={bookedItem._id} bookedItem={bookedItem} handleDelete={handleDelete}></Booked>)}
+                            </div>
                     }
                 </div>
             </div>

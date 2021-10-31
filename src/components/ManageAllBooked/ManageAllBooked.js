@@ -11,9 +11,9 @@ const ManageAllBooked = () => {
             .then(res => res.json())
             .then(data => {
                 setAllBooked(data);
+                setLoading(false)
             })
             .catch(error => console.log(error));
-        setLoading(false)
     }, [updatedBook]);
 
     const handleApprove = (id) => {

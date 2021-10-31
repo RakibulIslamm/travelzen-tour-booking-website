@@ -114,7 +114,7 @@ const Booking = () => {
                         <textarea {...register('notes')} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Write a note" />
                     </div>
                 </div>
-                <input className="px-12 py-3 rounded bg-yellow-600 text-white cursor-pointer" type="submit" value="Book" />
+                <input className="px-12 py-3 rounded bg-yellow-600 text-white cursor-pointer focus:opacity-80" type="submit" value="Book" />
             </form>
         </div>
     );

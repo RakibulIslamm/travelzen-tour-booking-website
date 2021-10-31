@@ -8,9 +8,11 @@ const useFetchData = () => {
     useEffect(() => {
         fetch('https://vast-tor-48150.herokuapp.com/packages')
             .then(res => res.json())
-            .then(data => setPackages(data))
+            .then(data => {
+                setPackages(data);
+                setLoading(false);
+            })
             .catch(error => console.log(error))
-        setLoading(false);
     }, []);
 
 

@@ -24,7 +24,7 @@ const BookedItem = (props) => {
                                 <p className="flex items-center gap-2 text-green-600"><BsPersonCheck />Approved</p>
                         }
                         {
-                            !status && <button onClick={() => handleApprove(_id)} className="bg-green-500 text-white px-4 py-1 xs:px-2 xs:text-xs rounded">Approve</button>
+                            !status && <button onClick={() => handleApprove(_id)} className="bg-green-500 text-white px-4 py-1 xs:px-2 xs:text-xs rounded  focus:opacity-80">Approve</button>
                         }
                     </div>
                 </div>

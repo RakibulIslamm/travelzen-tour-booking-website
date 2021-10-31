@@ -11,7 +11,7 @@ const Offerings = () => {
             {
                 !loading ? <div className="mt-10 grid grid-cols-3 gap-8 sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1">
                     {
-                        packages.map(pckg => <Offering key={pckg._id} package={pckg}></Offering>)
+                        packages.slice(0).reverse().map(pckg => <Offering key={pckg._id} package={pckg}></Offering>)
                     }
                 </div> :
                     <p className="text-center py-10 text-2xl font-medium">Loading...</p>
