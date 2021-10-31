@@ -10,6 +10,8 @@ const Booking = () => {
     const { user } = useAuth();
     const history = useHistory();
 
+    console.log(singlePackage);
+
 
     useEffect(() => {
         try {
@@ -59,63 +61,78 @@ const Booking = () => {
 
 
     return (
-        <div className="min-h-screen py-20 pb-20 flex justify-center items-center flex-col px-20 sm:px-10 xs:px-5">
-            <div className="w-full bg-cover bg-center">
-                <h1 className="text-3xl xs:text-lg font-semibold py-5 w-6/12 sm:w-full xs:w-full text-center mx-auto">Book - {singlePackage.title}</h1>
+        <div className="min-h-screen pt-16 pb-20">
+            <div style={{
+                backgroundImage: `linear-gradient(45deg, rgba(0, 1, 46, .8), rgba(1, 2, 82, .7)),url(${singlePackage.img})`,
+            }} className="w-full bg-cover bg-center bg-no-repeat">
+                <h1 className="text-3xl text-white xs:text-lg font-semibold py-10 xs:py-5 sm:w-full xs:w-full text-center mx-auto">{singlePackage.title}</h1>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            Name
-                        </label>
-                        <input {...register('name', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" value={user.displayName} readOnly placeholder="Your Name" />
-                    </div>
+            <div className="w-full px-20 sm:px-10 xs:px-5 mt-8 flex items-start xs:flex-col sm:flex-col gap-5">
+                <div className="w-6/12 sm:w-full xs:w-full p-5 flex justify-center items-start flex-col gap-3">
+                    <p><b>Overview: </b>{singlePackage.overview}</p>
+                    <p><b>Country:</b> {singlePackage.country}</p>
+                    <p><b>Departure:</b> {singlePackage.departure}</p>
+                    <p><b>Return:</b> {singlePackage.return}</p>
+                    <p><b>Group Size:</b> {singlePackage.group_size}</p>
+                    <p><b>Hotel:</b> {singlePackage.hotels}</p>
+                    <p><b>Cost:</b> {singlePackage.cost}</p>
+                    <h3 className="py-4 border-t border-gray-300 text-2xl font-bold">For more info, Contact us: <br /> {singlePackage.contact} </h3>
                 </div>
+                <form onSubmit={handleSubmit(onSubmit)} className="w-6/12 sm:w-full xs:w-full p-5 shadow-xl border border-gray-300">
+                    <h2 className="text-xl font-bold mb-6">Booking Now</h2>
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Name
+                            </label>
+                            <input {...register('name', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" value={user.displayName} readOnly placeholder="Your Name" />
+                        </div>
+                    </div>
 
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            Email
-                        </label>
-                        <input {...register('email', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="email" value={user.email} readOnly placeholder="Your Email" />
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Email
+                            </label>
+                            <input {...register('email', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="email" value={user.email} readOnly placeholder="Your Email" />
+                        </div>
                     </div>
-                </div>
 
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            Phone
-                        </label>
-                        <input {...register('phone', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Phone" />
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Phone
+                            </label>
+                            <input {...register('phone', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Phone" />
+                        </div>
                     </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            Address
-                        </label>
-                        <input {...register('address', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Address" />
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Address
+                            </label>
+                            <input {...register('address', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Address" />
+                        </div>
                     </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            Pickup Address
-                        </label>
-                        <input {...register('pikup_address', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Pickup Address" />
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Pickup Address
+                            </label>
+                            <input {...register('pikup_address', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Pickup Address" />
+                        </div>
                     </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            Notes
-                        </label>
-                        <textarea {...register('notes')} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Write a note" />
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Notes
+                            </label>
+                            <textarea {...register('notes')} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Write a note" />
+                        </div>
                     </div>
-                </div>
-                <input className="px-12 py-3 rounded bg-yellow-600 text-white cursor-pointer focus:opacity-80" type="submit" value="Book" />
-            </form>
+                    <input className="px-12 py-3 rounded bg-yellow-600 text-white cursor-pointer focus:opacity-80" type="submit" value="Book" />
+                </form>
+            </div>
         </div>
     );
 };
