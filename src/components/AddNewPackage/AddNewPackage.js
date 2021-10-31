@@ -5,7 +5,7 @@ const AddNewPackage = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        // console.log(data);
+        console.log(data);
         fetch('https://vast-tor-48150.herokuapp.com/packages', {
             method: 'POST',
             headers: {
