@@ -60,11 +60,16 @@ const ManageAllBooked = () => {
         <div className="min-h-screen justify-center flex items-center px-20 sm:px-10 xs:px-5 py-20">
             <div>
                 <h2 className="text-3xl font-semibold py-8 text-center">Manage All Booking List</h2>
-                <div className="grid lg:grid-cols-2 gap-4">
 
+                <div className="flex justify-center items-center">
                     {
                         loading ? 'Loading....' :
-                            allBooked.map(bookedItem => <BookedItem key={bookedItem._id} bookedItem={bookedItem} handleApprove={handleApprove} handleDelete={handleDelete}></BookedItem>)
+                            !allBooked.length ? <p className="text-xl text-gray-600 font-semibold block">No booked found</p> :
+                                <div className="grid lg:grid-cols-2 gap-4">
+                                    {
+                                        allBooked.map(bookedItem => <BookedItem key={bookedItem._id} bookedItem={bookedItem} handleApprove={handleApprove} handleDelete={handleDelete}></BookedItem>)
+                                    }
+                                </div>
                     }
                 </div>
             </div>

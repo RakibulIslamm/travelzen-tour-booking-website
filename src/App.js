@@ -12,6 +12,7 @@ import AddNewPackage from './components/AddNewPackage/AddNewPackage';
 import MyBooked from './components/MyBooked/MyBooked';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 import ManageAllBooked from './components/ManageAllBooked/ManageAllBooked';
+import Packages from './components/Packages/Packages';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/packages">
+            <Packages></Packages>
           </Route>
           <PrivateRoute exact path="/booking/:id">
             <Booking></Booking>

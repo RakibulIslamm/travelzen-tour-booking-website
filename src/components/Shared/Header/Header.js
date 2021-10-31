@@ -20,7 +20,6 @@ const Header = () => {
                 <nav className="space-x-8 text-white font-light text-base tracking-wide sm:hidden xs:hidden">
                     <Link to="/home">Home</Link>
                     <Link to="/packages">Packages</Link>
-                    <Link to="/destination">Destination</Link>
                     {
                         user && <Link to="/my-booked">My Booked</Link>
                     }

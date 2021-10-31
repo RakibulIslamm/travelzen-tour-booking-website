@@ -6,4 +6,5 @@ Travelzen live link [Visit](https://travelzen-5b237.web.app/).
 
 In this project, I developed a simple tour booking website with react, mongodb and firebase.
 
-# TRAVELZEN Features
+## TRAVELZEN Features
+
