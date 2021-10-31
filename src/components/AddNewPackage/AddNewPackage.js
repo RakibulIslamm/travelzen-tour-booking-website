@@ -50,6 +50,9 @@ const AddNewPackage = () => {
                         <label>Return</label>
                         <input {...register('return', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="datetime-local" />
                     </div>
+                    <div>
+                        <input {...register('hotels', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Hotel Name" />
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-5 xs:grid-cols-1">
